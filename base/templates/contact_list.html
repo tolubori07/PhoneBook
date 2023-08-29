@@ -1,0 +1,29 @@
+{% load static %} {% include 'main.html' %} {% block content %}
+<main class="contactmain">
+    <div class="container-fluid">
+        <form class="d-flex" method="GET"  action="{% url 'contactList'%}?q={{contacts.first_name}}">
+          <input type="search"  id="search" class="search" placeholder="search contacts" name="q" value="{{search_string}}">
+          <button class="btn search-btn" type="submit">Search</button>
+        </form>
+      </div>
+    
+  {% include 'card_component.html' %}
+  {% include 'emergency_component.html' %}
+  {% include 'favourites_component.html' %}
+  <div class="contactwrapper">
+    <ul class="contact-list">
+      {% for contacts in contacts %}
+
+      <li>
+        <img
+          src="/static/{{contacts.avatar.url}}"
+          alt=""
+          class="contact-avatar"
+        /><a href="{% url 'contacts' contacts.id %}">{{contacts.first_name}}</a> 
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+  </div>
+</main>
+{% endblock content %}

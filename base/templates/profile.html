@@ -1,0 +1,22 @@
+{% load static %} {% include 'main.html' %} {% block content %}
+
+{% include 'card_component.html' %}
+
+<div class="container-fluid">
+<ul class="list-group">
+    <li class="list-group-item" style="background-color: transparent;color: white;"><h3>Address:</h3>
+        <p>{{request.user.first_name}}</p>
+    </li>
+    <li class="list-group-item" style="background-color: transparent;color: white;"><h3>Last Name:</h3>
+        <p>{{request.user.last_name}}</p></li>
+    <li class="list-group-item" style="background-color: transparent;color: white;"><h3>Phone Number:</h3>
+        <p>{{request.user.phone_number}}</p></li>
+    <li class="list-group-item" style="background-color: transparent;color: white;"><h3>Email:</h3>
+        <p>{{request.user.email}}</p></li>
+    <li class="list-group-item" style="background-color: transparent;color: white;"><h3>Address:</h3>
+        <p>{{request.user.address}}</p></li>
+    <li class="list-group-item" style="background-color: transparent;color: white;"><h3>Social Links:</h3>
+        <p>{{request.user.sociallinks}}</p></li>
+  </ul>
+</div>
+{% endblock content %}

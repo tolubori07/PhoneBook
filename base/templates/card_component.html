@@ -1,0 +1,11 @@
+<div class ="user-card">
+    <div>
+    <img src ="/static{{request.user.avatar.url}}" class ="user-avatar"/>
+</div>
+</br>
+<div>
+    <h3>{{request.user.first_name}} {{request.user.last_name}}</h3>
+    <small class="username">{{request.user.username}}</small>
+    <button class="btn"><a href="{% url 'edit_profile'%}">Edit Profile</a></button>
+</div>
+    </div>

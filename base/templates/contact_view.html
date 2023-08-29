@@ -1,0 +1,59 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<main class="contact_view_main">
+  <section class="contact-card">
+    <div class="avatar">
+      <img
+        src="{{contact.avatar.url}}"
+        alt="user avatar"
+        class="user-avatar"
+      />
+    </div>
+    <div class="name">
+      {% if contact.first_name == None %}
+      <h3>{{contact.last_name}}</h3>
+      {% elif contact.last_name == None %}
+      <h3>{{contact.first_name}}</h3>
+      {% else %}
+      <h3>{{contact.first_name}} {{contact.last_name}}</h3>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="main-info">
+    <div class="contact-info">
+      <h5>
+        Phone number:
+        <br />
+        <p>{{contact.phone_number}}</p>
+      </h5>
+
+      <h5>Email address: {{contact.email}}</h5>
+
+      <address>{{contact.address}}</address>
+
+      {% if sociallinks %}
+      <h5>Social Links:
+        <p>{{contact.sociallinks}}</p>
+      </h5>
+      {% else %}
+      <h5> No Social Links</h5>
+      {% endif %}
+
+      
+    </div>
+  </section>
+  <section>
+    {% if contact.favourites %}
+    <a href="{% url 'remove_favorite' contact.id %}">Remove from Favorites</a>
+  {% else %}
+    <a href="{% url 'add_to_favourite' contact.id %}">Add to Favorites</a>
+  {% endif %}
+  </br>
+  {% if contact.Emergency %}
+    <a href="{% url 'remove_emergency' contact.id %}">Remove from Emergency Contacts</a>
+  {% else %}
+    <a href="{% url 'add_to_emergency' contact.id %}">Add to Emergency contacts</a>
+  {% endif %}
+  </section>
+</main>
+{%endblock content%}

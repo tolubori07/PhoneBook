@@ -1,0 +1,50 @@
+{% extends 'main.html' %} {% load static %}  {% block content %}
+
+
+<form class="row g-3" method="POST"
+enctype="multipart/form-data" >
+    {%csrf_token%}
+    <div class="col-md-5">
+      <label for="inputEmail4" class="form-label">Email</label>
+      {{form.email}}
+    </div>
+
+    <div class="col-md-5">
+        <label for="inputEmail4" class="form-label">First Name</label>
+        {{form.first_name}}
+      </div>
+
+      <div class="col-md-5">
+        <label for="inputEmail4" class="form-label">last Name</label>
+        {{form.last_name}}
+      </div>
+
+    <div class="col-md-5">
+      <label for="inputAddress" class="form-label">Address</label>
+      {{form.address}}
+    </div>
+
+    <div class="col-md-5">
+        <label for="inputAddress" class="form-label">Phone Number</label>
+        {{form.phone_number}}
+      </div>
+
+      <div class="col-md-5">
+        <label for="inputAddress" class="form-label">Social Links</label>
+        {{form.sociallinks}}
+      </div>
+
+      <div class="col-md-5">
+      <button class="form__action btn">
+      <a class="" href="{{request.META.HTTP_REFERER}}"
+        >Cancel</a>
+      </button>
+    </div>
+
+    <div class="col-md-5">
+        <button class="btn btn--main" type="submit">Update</button>
+    </div>
+  </form>
+
+
+{% endblock content %}

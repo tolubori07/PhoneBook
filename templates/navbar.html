@@ -1,0 +1,67 @@
+<dialog id="modal">
+  <button class="close" onclick="modal.close()">&times;</button>
+  <p>Are you sure you want to logout?</p>
+  <a href="{% url 'logout' %}"><button class="yes">Yes</button></a>
+</dialog>
+
+<nav
+  class="navbar navbar-expand-lg rounded navbar-dark bg-dark"
+  aria-label="Eleventh navbar example"
+>
+  <div class="container-fluid bg-dark navbar-dark">
+    <div id="nav-logo-section" class="nav-section">
+      <i class="bi bi-telephone-fill"
+        ><h4>Hello {{request.user.first_name}}</h4></i
+      >
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar"
+      aria-controls="navbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'newcontact' %}">Add contacts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contactList' %}">Your contacts</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Settings <i class="bi bi-gear"></i
+          ></a>
+          <ul class="dropdown-menu dropdown-dark">
+            <li>
+              <a class="dropdown-item dropdown-link" href="{% url 'login' %}"
+                >login</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item dropdown-link"
+                onclick="modal.showModal()"
+                class="login"
+                >Logout</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
