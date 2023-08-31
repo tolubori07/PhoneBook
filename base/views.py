@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import Myusercreationform,contactForm
 from django.db.models import Q
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -62,6 +64,11 @@ def signup(request):
            user.username = user.username.lower()
            user.save()
            login(request, user)
+           subject = 'welcome to PhoneBook!!'
+           message = f'Hi {user.username}, thank you for registering in PhoneBook.'
+           email_from = settings.EMAIL_HOST_USER
+           recipient_list = [user.email]
+           send_mail( subject, message, email_from, recipient_list )
            return redirect('home')
         else:
             messages.error (request, 'An error occurred while registering you')
