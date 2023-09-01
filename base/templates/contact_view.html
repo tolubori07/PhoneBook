@@ -54,6 +54,10 @@
   {% else %}
     <a href="{% url 'add_to_emergency' contact.id %}">Add to Emergency contacts</a>
   {% endif %}
+  <form method="post" action="{% url 'delete_contact' contact.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="bg-danger">
+</form>
   </section>
 </main>
 {%endblock content%}

@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 .form > input {
   width: 60%;
@@ -59,12 +60,14 @@ input {
   border-radius: 40px;
 }
 .btn {
-  background-color: var(--border-color);
+ 
   width: 50%;
   height: 4rem;
   position: relative;
   left: 27%;
   border-radius: 20px 20px 20px 20px;
+  border-color: var(--border-color);
+  color: white;
 }
 .messages {
   width: 30%;
@@ -404,5 +407,11 @@ hr{
 
 .btn:hover{
   border: solid 1px var(--border-color);
+  color: black;
+   background-color: var(--border-color); 
+}
+
+.form-control{
   color: white;
+  width: 50%;
 }

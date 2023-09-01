@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lsv+-5v^q5oixx6kbl85e+vxwa(81opc+m#m_+g-458lpjg1uz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -139,5 +139,5 @@ STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://contacts.up.railway.app'
+    'https://phonebook1.up.railway.app'
 ]

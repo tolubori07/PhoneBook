@@ -4,7 +4,7 @@
     {% for contact in contacts %} {% if contact.Emergency == True%}
     <li>
       <img
-        src="/static/{{contact.avatar.url}}"
+        src="/static{{contact.avatar.url}}"
         alt=""
         class="contact-avatar"
       /><a href="{% url 'contacts' contact.id %}">{{contact.first_name}}</a>

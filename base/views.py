@@ -8,11 +8,12 @@ from .forms import Myusercreationform,contactForm
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.conf import settings
+from.utils import   get_random_activity
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 
-@login_required
+@login_required(login_url='login')
 def contactList(request):
     user = User.objects.all()
     contacts = Contacts.objects.filter(user_id = request.user.id).order_by('first_name')
@@ -148,8 +149,24 @@ def updateuser(request):
     user = request.user
     form = Myusercreationform(instance = user)
     if request.method == 'POST':
-        form = Myusercreationform(request.POST, request.FILES, instance = user)
+        form = Myusercreationform(request.POST, instance = user)
         if form.is_valid():
             form.save()
             return redirect('profile', pk = user.id)
     return render(request, 'update-user.html', {'form': form})
+
+
+def delete_contact(request, contact_id):
+    try:
+        contact = Contacts.objects.get(id=contact_id, user_id=request.user.id)
+        contact.delete()
+    except Contacts.DoesNotExist:
+        # Handle the case where the contact does not exist
+        pass
+
+    return redirect('contactList')  # Redirect back to the contact list
+
+
+def custom_404(request, exception):
+    activity = get_random_activity()
+    return render(request, '404.html', {'activity': activity}, status=404)

@@ -1,49 +1,39 @@
 {% extends 'main.html' %} {% load static %} {% block content %}
-<main>
+
   {% if page == 'login' %}
-  <div class="form">
-    <form action="" method="post" class="form">
+    <form action="" method="post" class="row g-3">
       {%csrf_token%}
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          name="email"
-        />
-        <div id="emailHelp" class="form-text">
-          We'll never share your email with anyone else.
-        </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control " id="inputEmail4" name="email" placeholder="Enter your email">
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          name="password"
-        />
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" class="form-control bg" id="inputPassword4" name="password" placeholder="Enter your Password">
       </div>
-      <button type="submit" class="btn">Login</button>
+    
+      <div class="col-12">
+        <button type="submit" class="btn">Sign in</button>
+      </div>
       {% if messages %} {% for message in messages %}
       <div class="alert alert-danger messages" role="alert">{{ message }}</div>
 
       {% endfor %} {% endif %}
-      <p>Don't have an account?<a href="{%url 'signup'%}">Sign-up</a></p>
+      <p>Don't have an account? <a href="{%url 'signup'%}">Sign-up</a></p>
     </form>
-  </div>
   {% else %}
   <div class="form">
     <form action="" method="POST" class="form">
       {% csrf_token %} {% for field in form %}
       <label>{{field.label}}</label>
-      {{field}} {% endfor %}
+    </br>
+           {{field}} 
+  </br>
+           {% endfor %}
       <button type="submit" class="btn">Register</button>
-      <p>Signed up already<a href="{%url 'login'%}">Login</a></p>
+      <p>Signed up already? <a href="{%url 'login'%}">Login</a></p>
     </form>
   </div>
   {% endif %}
-</main>
+
 {% endblock content%}

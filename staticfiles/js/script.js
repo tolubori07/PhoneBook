@@ -10,7 +10,6 @@ function showArticle(index) {
     }
   });
 }
-
 function movepageleft() {
   if (currentIndex > 0) {
     currentIndex--;
@@ -19,7 +18,6 @@ function movepageleft() {
   }
   showArticle(currentIndex);
 }
-
 function movepageright() {
   if (currentIndex < articles.length - 1) {
     currentIndex++;
@@ -28,14 +26,8 @@ function movepageright() {
   }
   showArticle(currentIndex);
 }
-
 // Initialize by showing the first article
 showArticle(currentIndex);
-
-
-
-//changer border color
-
 const borderColors = ['#5B9279', '#8AA39B', '#BFDBF7', '#DEFFFC','#ACBFA4','#759AAB', '#1B98E0','#47E5BC', '#3423A6', '#F2F3AE'];
 
 window.onload = () => {
@@ -43,4 +35,9 @@ window.onload = () => {
   style.getPropertyValue('--dark-color') 
   document.documentElement.style.setProperty('--border-color', borderColors[Math.floor(Math.random()*borderColors.length)]);
 }
+
+
+
+
+
 
